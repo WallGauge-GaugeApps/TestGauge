@@ -1,0 +1,11 @@
+{
+    "descripition":"Test Gauge",
+    "uuid":"d37282d3-0dda-411e-b978-1ae115f4f0c9",
+    "dBusName":"com.testGauge",
+    "calibrationTable": [[0,0],[614,614]],
+    "gaugeIrAddress":"26",
+    "battLifeInDays":"365",
+    "battLastReplaced":"",
+    "gaugeValueToDisplayOnBoot":"307",
+    "gaugeURL":"https://WallGauge.com"
+}
