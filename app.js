@@ -47,8 +47,8 @@ function sweep(){
             count = min;
         };
         myAppMan.setGaugeValue(count, ' raw')
-    }, 15000);
-}
+    }, 60000);
+};
 
 /** Overrides console.error, console.warn, and console.debug
  * By placing <#> in front of the log text it will allow us to filter them with systemd
