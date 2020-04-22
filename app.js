@@ -13,7 +13,7 @@ if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
 } else {
     let x = myAppMan.config.gaugeValueToDisplayOnBoot;
     console.log('Setting gauge value to ' + x);
-    myAppMan.setGaugeValue(x);
+    myAppMan.setGaugeValue(x, ' raw');
 };
 
 
