@@ -20,6 +20,9 @@ if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
 
 };
 
+myAppMan.on('appManLoaded', ()=>{
+    console.log('appManLoaded has fired.  make the call now?? . . . . . . . . . . . . . . . . . . . . . . . ');
+});
 
 /** Overrides console.error, console.warn, and console.debug
  * By placing <#> in front of the log text it will allow us to filter them with systemd
