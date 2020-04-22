@@ -1,21 +1,21 @@
 [Unit]
-Description=testGauge
+Description=TestGauge
 Wants=rgMan.service
 After=rgMan.service
 
 [Service]
 Type=dbus
-BusName=com.testGauge
-ExecStart=/usr/local/bin/node /opt/rGauge/gList/testGauge/app.js
+BusName=com.TestGauge
+ExecStart=/usr/local/bin/node /opt/rGauge/gList/TestGauge/app.js
 Restart=on-failure
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=testGauge
+SyslogIdentifier=TestGauge
 User=rgservice
 Group=irdclient
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 Environment=NODE_ENV=production
-WorkingDirectory=/opt/rGauge/gList/testGauge
+WorkingDirectory=/opt/rGauge/gList/TestGauge
 TimeoutSec=180
 
 [Install]
