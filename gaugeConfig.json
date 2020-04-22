@@ -4,8 +4,8 @@
     "dBusName":"com.TestGauge",
     "calibrationTable": [[0,0],[614,614]],
     "gaugeIrAddress":"26",
-    "battLifeInDays":"sweep",
+    "battLifeInDays":"365",
     "battLastReplaced":"",
-    "gaugeValueToDisplayOnBoot":"307",
+    "gaugeValueToDisplayOnBoot":"sweep",
     "gaugeURL":"https://WallGauge.com"
 }
