@@ -46,7 +46,7 @@ function sweep(){
         if(count > max){
             count = min;
         };
-        myAppMan.setGaugeValue(x, ' raw')
+        myAppMan.setGaugeValue(count, ' raw')
     }, 15,000);
 }
 
