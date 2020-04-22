@@ -26,6 +26,7 @@ if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
 myAppMan.on('Update', ()=>{
     console.log('Update has fired. ');
     if(myAppMan.config.gaugeValueToDisplayOnBoot != "sweep"){
+        clearInterval(sweepInterval);
         let x = myAppMan.config.gaugeValueToDisplayOnBoot;
         console.log('Setting gauge value to ' + x);
         myAppMan.setGaugeValue(x, ' raw');
@@ -38,7 +39,7 @@ function sweep(){
     console.log('Starting gauge value sweep from 0 to 614');
     let max = 614;
     let min = 0;
-    let count = min;
+    let count = 307;
     let interval = 10.23
     clearInterval(sweepInterval);
     sweepInterval = setInterval(() => {
