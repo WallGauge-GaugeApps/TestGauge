@@ -23,8 +23,8 @@ if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
 
 };
 
-myAppMan.on('appManLoaded', ()=>{
-    console.log('appManLoaded has fired.  make the call now?? . . . . . . . . . . . . . . . . . . . . . . . ');
+myAppMan.on('Update', ()=>{
+    console.log('Update has fired. ');
     if(myAppMan.config.gaugeValueToDisplayOnBoot != "sweep"){
         let x = myAppMan.config.gaugeValueToDisplayOnBoot;
         console.log('Setting gauge value to ' + x);
@@ -47,7 +47,7 @@ function sweep(){
             count = min;
         };
         myAppMan.setGaugeValue(count, ' raw')
-    }, 15,000);
+    }, 15000);
 }
 
 /** Overrides console.error, console.warn, and console.debug
