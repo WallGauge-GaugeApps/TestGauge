@@ -39,7 +39,7 @@ function sweep(){
     let max = 614;
     let min = 0;
     let count = min;
-    let interval = 10
+    let interval = 10.23
     clearInterval(sweepInterval);
     sweepInterval = setInterval(() => {
         count = count + interval;
