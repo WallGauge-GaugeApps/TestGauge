@@ -11,9 +11,13 @@ console.log('________________________________________________________');
 if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
     console.log('Add Logic to sweep the value between 0 and 614')
 } else {
-    let x = myAppMan.config.gaugeValueToDisplayOnBoot;
-    console.log('Setting gauge value to ' + x);
-    myAppMan.setGaugeValue(x, ' raw');
+    console.log('In 15 seconds we will send data');
+    setTimeout(()=>{
+        let x = myAppMan.config.gaugeValueToDisplayOnBoot;
+        console.log('Setting gauge value to ' + x);
+        myAppMan.setGaugeValue(x, ' raw');
+    }, 15000);
+
 };
 
 
