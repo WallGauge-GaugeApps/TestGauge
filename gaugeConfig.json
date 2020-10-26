@@ -3,9 +3,9 @@
     "uuid":"d37282d3-0dda-411e-b978-1ae115f4f0c9",
     "dBusName":"com.TestGauge",
     "calibrationTable": [[0,0],[614,614]],
-    "gaugeIrAddress":"26",
+    "gaugeIrAddress":"255",
     "battLifeInDays":"365",
     "battLastReplaced":"",
-    "gaugeValueToDisplayOnBoot":"sweep",
+    "gaugeValueToDisplayOnBoot":"10",
     "gaugeURL":"https://WallGauge.com"
 }

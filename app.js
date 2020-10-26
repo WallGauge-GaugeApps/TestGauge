@@ -1,41 +1,59 @@
-const MyAppMan =        require('./MyAppManager.js');
+const MyAppMan = require('./MyAppManager.js');
 
 overrideLogging();
-var sweepInterval = {};
+
+const loopRawSeconds = 15;
+var loopRawInterval = null;
+var sweepInterval = null;
+
 const myAppMan = new MyAppMan(__dirname + '/gaugeConfig.json', __dirname + '/modifiedConfig.json', false);
 
 console.log('__________________ App Config follows __________________');
-console.dir(myAppMan.config, {depth: null});
+console.dir(myAppMan.config, { depth: null });
 console.log('________________________________________________________');
 
-if(myAppMan.config.gaugeValueToDisplayOnBoot == "sweep"){
+if (myAppMan.config.gaugeValueToDisplayOnBoot == "sweep") {
     console.log('In 15 seconds will start endless sweep from 0 to 614');
-    setTimeout(()=>{
+    setTimeout(() => {
         sweep();
-    },15000)
+    }, 15000)
 } else {
     console.log('In 15 seconds we will send data');
-    setTimeout(()=>{
+    setTimeout(() => {
         let x = myAppMan.config.gaugeValueToDisplayOnBoot;
         console.log('Setting gauge value to ' + x);
-        myAppMan.setGaugeValue(x, ' raw');
+        myAppMan.setGaugeValue(x, ' raw stepper position at ' + (new Date()).toLocaleTimeString());
+        loopRaw()
     }, 15000);
 
 };
 
-myAppMan.on('Update', ()=>{
+myAppMan.on('Update', () => {
     console.log('Update has fired. ');
-    if(myAppMan.config.gaugeValueToDisplayOnBoot != "sweep"){
+    if (myAppMan.config.gaugeValueToDisplayOnBoot != "sweep") {
         clearInterval(sweepInterval);
         let x = myAppMan.config.gaugeValueToDisplayOnBoot;
+        myAppMan.setGaugeStatus('Received new stepper value ' + x + ' at ' + (new Date()).toLocaleTimeString());
         console.log('Setting gauge value to ' + x);
-        myAppMan.setGaugeValue(x, ' raw');
+        myAppMan.setGaugeValue(x, ' raw stepper position at ' + (new Date()).toLocaleTimeString());
+        loopRaw();
     } else {
+        clearInterval(loopRawInterval);
         sweep();
     };
 });
 
-function sweep(){
+function loopRaw() {
+    console.log('Starting send stepperValue interval for every ' + loopRawSeconds) + ' seconds.';
+    clearInterval(loopRawInterval);
+    loopRawInterval = setInterval(() => {
+        let x = myAppMan.config.gaugeValueToDisplayOnBoot;
+        console.log('Setting gauge value to ' + x);
+        myAppMan.setGaugeValue(x, ' raw stepper position at ' + (new Date()).toLocaleTimeString());
+    }, loopRawSeconds * 1000);
+}
+
+function sweep() {
     console.log('Starting gauge value sweep from 0 to 614');
     let max = 614;
     let min = 0;
@@ -44,7 +62,7 @@ function sweep(){
     clearInterval(sweepInterval);
     sweepInterval = setInterval(() => {
         count = count + interval;
-        if(count > max){
+        if (count > max) {
             count = min;
         };
         myAppMan.setGaugeValue(count, ' raw')
@@ -55,11 +73,11 @@ function sweep(){
  * By placing <#> in front of the log text it will allow us to filter them with systemd
  * For example to just see errors and warnings use journalctl with the -p4 option 
  */
-function overrideLogging(){
+function overrideLogging() {
     const orignalConErr = console.error;
     const orignalConWarn = console.warn;
     const orignalConDebug = console.debug;
-    console.error = ((data = '', arg = '')=>{orignalConErr('<3>'+data, arg)});
-    console.warn = ((data = '', arg = '')=>{orignalConWarn('<4>'+data, arg)});
-    console.debug = ((data = '', arg = '')=>{orignalConDebug('<7>'+data, arg)});
-  };
+    console.error = ((data = '', arg = '') => { orignalConErr('<3>' + data, arg) });
+    console.warn = ((data = '', arg = '') => { orignalConWarn('<4>' + data, arg) });
+    console.debug = ((data = '', arg = '') => { orignalConDebug('<7>' + data, arg) });
+};
