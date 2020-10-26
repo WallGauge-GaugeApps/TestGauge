@@ -1,11 +1,12 @@
 [Unit]
 Description=TestGauge
-Wants=rgMan.service
-After=rgMan.service
+Wants=gdtMan.service
+Wants=bluetooth.service
+After=gdtMan.service
+After=bluetooth.service
 
 [Service]
-Type=dbus
-BusName=com.TestGauge
+Type=exec
 ExecStart=/usr/local/bin/node /opt/rGauge/gList/TestGauge/app.js
 Restart=on-failure
 StandardOutput=syslog
@@ -15,6 +16,8 @@ User=rgservice
 Group=irdclient
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 Environment=NODE_ENV=production
+Environment=NODE_PATH=/opt/rGauge/.npm-global/lib/node_modules
+Environment=OPENSSL_CONF=/opt/rGauge/gList/TestGauge/postInstall/opensslMod.cnf
 WorkingDirectory=/opt/rGauge/gList/TestGauge
 TimeoutSec=180
 
