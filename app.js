@@ -6,7 +6,9 @@ const loopRawSeconds = 15;
 var loopRawInterval = null;
 var sweepInterval = null;
 
-const myAppMan = new MyAppMan(__dirname + '/gaugeConfig.json', __dirname + '/modifiedConfig.json', false);
+var myAppMan = new MyAppMan(__dirname + '/gaugeConfig.json', __dirname + '/modifiedConfig.json', false);
+
+var gaugeIrAddressLast = myAppMan.config.gaugeIrAddress
 
 console.log('__________________ App Config follows __________________');
 console.dir(myAppMan.config, { depth: null });
@@ -30,10 +32,16 @@ if (myAppMan.config.gaugeValueToDisplayOnBoot == "sweep") {
 
 myAppMan.on('Update', () => {
     console.log('Update has fired. ');
+    if(gaugeIrAddressLast != myAppMan.config.gaugeIrAddress){
+        console.log('The gauge IR address has changed we need to reinit myAppMan');
+        gaugeIrAddressLast = myAppMan.config.gaugeIrAddress;
+        myAppMan = new MyAppMan(__dirname + '/gaugeConfig.json', __dirname + '/modifiedConfig.json', false);
+    }
+
     if (myAppMan.config.gaugeValueToDisplayOnBoot != "sweep") {
         clearInterval(sweepInterval);
         let x = myAppMan.config.gaugeValueToDisplayOnBoot;
-        myAppMan.setGaugeStatus('Received new stepper value ' + x + ' at ' + (new Date()).toLocaleTimeString());
+        myAppMan.setGaugeStatus('Received new stepper value ' + x + ' for gauge address ' + myAppMan.config.gaugeIrAddress + ' at ' + (new Date()).toLocaleTimeString());
         console.log('Setting gauge value to ' + x);
         myAppMan.setGaugeValue(x, ' raw stepper position at ' + (new Date()).toLocaleTimeString());
         loopRaw();
