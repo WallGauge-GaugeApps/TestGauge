@@ -52,7 +52,27 @@ myAppMan.on('Update', () => {
 });
 
 myAppMan.on('findHome', (arg1) => {
-    console.log('Find home command received from gdtAdministrator app. ', arg1);
+    console.log('Gauge command received from gdtAdministrator app. ', arg1);
+    switch (arg1) {
+        case 0:
+            console.log('Sending LED Off to gague at' + myAppMan.config.gaugeIrAddress);
+            break;
+        case 1:
+            console.log('Sending LED On to gague at' + myAppMan.config.gaugeIrAddress);
+            break;
+        case 2:
+            console.log('Sending LED Flash to gague at' + myAppMan.config.gaugeIrAddress);
+            break;
+        case 3:
+            console.log('Sending Find Home to gague at' + myAppMan.config.gaugeIrAddress);
+            break;
+        case 4:
+            console.log('Sending Reset gague at' + myAppMan.config.gaugeIrAddress);
+            break;
+
+        default:
+            break;
+    }
 });
 
 function loopRaw() {
