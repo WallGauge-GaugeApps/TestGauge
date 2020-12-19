@@ -50,6 +50,15 @@ class myAppManager extends AppMan{
         gaugeValueToDisplayOnBoot.setValue(this.config.gaugeValueToDisplayOnBoot);
         gaugeCmd.setValue(cmdMenue);
     };
+
+    encodeCmd(cmdNum = 0, value = 0, address = this._deviceAddress) {
+        console.log('encoding command: cmdNum = ' + cmdNum + ', value = ' + value + ', address = ', address);
+        let encodedCmd = this.gTx.encodeCmd(cmdNum, value, address);
+        console.log('The encoded command = ' + encodedCmd);
+
+        
+        // this.gTx.sendEncodedCmd(this.gTx.encodeCmd(this.gTx._cmdList.Check_Battery_Voltage));
+    }
 };
 
 module.exports = myAppManager;

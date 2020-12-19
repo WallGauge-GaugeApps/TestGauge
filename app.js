@@ -56,19 +56,23 @@ myAppMan.on('gaugeCmd', (arg1) => {
     let cmdNum = arg1.toString('utf8');
     switch (cmdNum) {
         case '0':
-            console.log('Sending LED Off to gague at' + myAppMan.config.gaugeIrAddress);
+            console.log('Sending LED Off to gauge address ' + myAppMan.config.gaugeIrAddress);
             break;
-        case 1:
-            console.log('Sending LED On to gague at' + myAppMan.config.gaugeIrAddress);
+        case '1':
+            console.log('Sending LED On to gauge address ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            console.log('Encoding command');
+            myAppMan.encodeCmd(10, 1, myAppMan.config.gaugeIrAddress);
             break;
         case '2':
-            console.log('Sending LED Flash to gague at' + myAppMan.config.gaugeIrAddress);
+            console.log('Sending LED Flash to gauge address ' + myAppMan.config.gaugeIrAddress);
             break;
         case '3':
-            console.log('Sending Find Home to gague at' + myAppMan.config.gaugeIrAddress);
+            console.log('Sending Find Home to gauge address ' + myAppMan.config.gaugeIrAddress);
             break;
         case '4':
-            console.log('Sending Reset gague at' + myAppMan.config.gaugeIrAddress);
+            console.log('Sending Reset gauge address ' + myAppMan.config.gaugeIrAddress);
             break;
 
         default:
