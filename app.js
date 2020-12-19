@@ -57,22 +57,38 @@ myAppMan.on('gaugeCmd', (arg1) => {
     switch (cmdNum) {
         case '0':
             console.log('Sending LED Off to gauge address ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            console.log('Encoding command');
+            myAppMan.encodeAndSendCmd(10, 0, myAppMan.config.gaugeIrAddress);
             break;
         case '1':
             console.log('Sending LED On to gauge address ' + myAppMan.config.gaugeIrAddress);
             console.log('Stopping setGaugeValue interval...');
             clearInterval(loopRawInterval);
             console.log('Encoding command');
-            myAppMan.encodeCmd(10, 1, myAppMan.config.gaugeIrAddress);
+            myAppMan.encodeAndSendCmd(10, 1, myAppMan.config.gaugeIrAddress);
             break;
         case '2':
             console.log('Sending LED Flash to gauge address ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            console.log('Encoding command');
+            myAppMan.encodeAndSendCmd(10, 2, myAppMan.config.gaugeIrAddress);
             break;
         case '3':
             console.log('Sending Find Home to gauge address ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            console.log('Encoding command');
+            myAppMan.encodeAndSendCmd(2, 0, myAppMan.config.gaugeIrAddress);
             break;
         case '4':
             console.log('Sending Reset gauge address ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            console.log('Encoding command');
+            myAppMan.encodeAndSendCmd(1, 0, myAppMan.config.gaugeIrAddress);
             break;
 
         default:

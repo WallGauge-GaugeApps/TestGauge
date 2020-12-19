@@ -51,12 +51,13 @@ class myAppManager extends AppMan{
         gaugeCmd.setValue(cmdMenue);
     };
 
-    encodeCmd(cmdNum = 0, value = 0, address = this._deviceAddress) {
+    encodeAndSendCmd(cmdNum = 0, value = 0, address = this._deviceAddress) {
         console.log('encoding command: cmdNum = ' + cmdNum + ', value = ' + value + ', address = ', address);
         let encodedCmd = this.gTx.encodeCmd(cmdNum, value, address);
-        console.log('The encoded command = ' + encodedCmd);
+        console.log('Sending the encoded command = ' + encodedCmd);
+        this.gTx.sendEncodedCmd(encodedCmd);
 
-        
+
         // this.gTx.sendEncodedCmd(this.gTx.encodeCmd(this.gTx._cmdList.Check_Battery_Voltage));
     }
 };
