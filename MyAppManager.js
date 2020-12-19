@@ -56,10 +56,7 @@ class myAppManager extends AppMan{
         let encodedCmd = this.gTx.encodeCmd(cmdNum, value, address);
         console.log('Sending the encoded command = ' + encodedCmd);
         this.gTx.sendEncodedCmd(encodedCmd);
-
-
-        // this.gTx.sendEncodedCmd(this.gTx.encodeCmd(this.gTx._cmdList.Check_Battery_Voltage));
-    }
+    };
 };
 
 module.exports = myAppManager;
