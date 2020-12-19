@@ -53,7 +53,8 @@ myAppMan.on('Update', () => {
 
 myAppMan.on('gaugeCmd', (arg1) => {
     console.log('Gauge command received from gdtAdministrator app. ', arg1);
-    switch (arg1) {
+    let cmdNum = arg1.toString('utf8');
+    switch (cmdNum) {
         case '0':
             console.log('Sending LED Off to gague at' + myAppMan.config.gaugeIrAddress);
             break;
@@ -71,7 +72,7 @@ myAppMan.on('gaugeCmd', (arg1) => {
             break;
 
         default:
-            console.warn('Unknown gauge command ->' + arg1 + '<-');
+            console.warn('Unknown gauge command ->' + cmdNum + '<-. Raw arg value = ->' + arg1 + '<-');
             break;
     }
 });
