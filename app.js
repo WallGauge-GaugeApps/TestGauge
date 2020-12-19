@@ -32,7 +32,7 @@ if (myAppMan.config.gaugeValueToDisplayOnBoot == "sweep") {
 
 myAppMan.on('Update', () => {
     console.log('Update has fired. ');
-    if(gaugeIrAddressLast != myAppMan.config.gaugeIrAddress){
+    if (gaugeIrAddressLast != myAppMan.config.gaugeIrAddress) {
         console.log('The gauge IR address has changed we need to reinit myAppMan');
         gaugeIrAddressLast = myAppMan.config.gaugeIrAddress;
         myAppMan = new MyAppMan(__dirname + '/gaugeConfig.json', __dirname + '/modifiedConfig.json', false);
@@ -49,6 +49,10 @@ myAppMan.on('Update', () => {
         clearInterval(loopRawInterval);
         sweep();
     };
+});
+
+myAppMan.on('findHome', (arg1) => {
+    console.log('Find home command received from gdtAdministrator app. ', arg1);
 });
 
 function loopRaw() {
