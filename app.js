@@ -57,7 +57,7 @@ myAppMan.on('gaugeCmd', (arg1) => {
         case '0':
             console.log('Sending LED Off to gague at' + myAppMan.config.gaugeIrAddress);
             break;
-        case '1':
+        case 1:
             console.log('Sending LED On to gague at' + myAppMan.config.gaugeIrAddress);
             break;
         case '2':
