@@ -52,7 +52,7 @@ myAppMan.on('Update', () => {
 });
 
 myAppMan.on('gaugeCmd', (arg1) => {
-    console.log('Gauge command received from gdtAdministrator app. ', arg1);
+    console.log('Gauge command received from gdtAdministrator app. ');
     let cmdNum = arg1.toString('utf8');
     switch (cmdNum) {
         case '0':
@@ -84,6 +84,12 @@ myAppMan.on('gaugeCmd', (arg1) => {
             console.log('Stopping setGaugeValue interval...');
             clearInterval(loopRawInterval);
             myAppMan.encodeAndSendCmd(1, 0, myAppMan.config.gaugeIrAddress);
+            break;
+        case '5':
+            console.log('Disable cycle sleep ' + myAppMan.config.gaugeIrAddress);
+            console.log('Stopping setGaugeValue interval...');
+            clearInterval(loopRawInterval);
+            myAppMan.encodeAndSendCmd(6, 0, myAppMan.config.gaugeIrAddress);
             break;
 
         default:

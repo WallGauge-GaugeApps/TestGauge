@@ -44,7 +44,7 @@ class myAppManager extends AppMan{
             return (this.config.gaugeCmd);
         });
         
-        const cmdMenue = '0 = LED off, 1 = LED on, 2 = LED flash, 3 = find home, 4 = reset'
+        const cmdMenue = '0 = LED off, 1 = LED on, 2 = LED flash, 3 = find home, 4 = reset, 5 = disable cycle sleep'
 
         gaugeIrAddress.setValue(this.config.gaugeIrAddress);
         gaugeValueToDisplayOnBoot.setValue(this.config.gaugeValueToDisplayOnBoot);
