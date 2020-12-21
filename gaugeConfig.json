@@ -7,5 +7,5 @@
     "battLifeInDays":"365",
     "battLastReplaced":"",
     "gaugeValueToDisplayOnBoot":"10",
-    "gaugeURL":"https://WallGauge.com"
+    "gaugeURL":"https://wallgauge-gaugeapps.github.io/TestGauge/"
 }
