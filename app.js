@@ -53,7 +53,12 @@ myAppMan.on('Update', () => {
 
 myAppMan.on('gaugeCmd', (arg1) => {
     console.log('Gauge command received from gdtAdministrator app. ');
-    let cmdNum = arg1.toString('utf8');
+    let cmdArray = []
+    let x = ''
+    x = arg1.toString('utf8');
+    cmdArray = x.split(',')
+    let cmdNum = cmdArray[0]
+    console.log('command data = ' + cmdArray[1]);
     switch (cmdNum) {
         case '0':
             console.log('Sending LED Off to gauge address ' + myAppMan.config.gaugeIrAddress);
