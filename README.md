@@ -33,4 +33,4 @@ To set gauge into quick response mode for calibration testing:
     1) Send command 10,2 and wait for the LED to start flashing.  This command will turn the LED on when the gauge is awake and off when sleeping.
     2) Send command 6,0 to disable cycle sleep.  You will be able to tell this has been received when the LED stops turning off. 
     3) Send command 2,0 to find home.  After the needle goes to the stop you can send raw gauge values to check the calibration of your gauge face.
-    4) Once calibration testing is complete send command 1,0 to reset your gauge.  The gauge will turn on the LED and find home.  As soon as the needle starts to find home send a goto raw position to disable this command.  If you don't do this the gauge will continue to reset over and over.
+    4) Once calibration testing is complete send command 1,0 to reset your gauge.  The gauge will turn on the LED and find home.  As soon as the needle starts to find home send a goto raw position to remove this command form the command queue.  If you don't do this the gauge will continue to reset over and over.
