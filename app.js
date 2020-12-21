@@ -60,18 +60,22 @@ myAppMan.on('gaugeCmd', (arg1) => {
     let cmdNumStr = cmdArray[0]
     console.log('command data = ' + cmdArray[1]);
 
-    let cmdNum = Number(cmdArray[0].trim());
-    let cmdData = Number(cmdArray[1].trim());
-    if(cmdNum >= 0 && cmdNum <= 15){
-        if (cmdData >= 0 && cmdData <= 4095){
-            clearInterval(loopRawInterval);
-            console.log('Sending command: ' + cmdNum + ', data: ' + cmdData + ', address: ' + myAppMan.config.gaugeIrAddress);
-            myAppMan.encodeAndSendCmd(cmdNum, cmdData, myAppMan.config.gaugeIrAddress);
+    try {
+        let cmdNum = Number(cmdArray[0].trim());
+        let cmdData = Number(cmdArray[1].trim());
+        if (cmdNum >= 0 && cmdNum <= 15) {
+            if (cmdData >= 0 && cmdData <= 4095) {
+                clearInterval(loopRawInterval);
+                console.log('Sending command: ' + cmdNum + ', data: ' + cmdData + ', address: ' + myAppMan.config.gaugeIrAddress);
+                myAppMan.encodeAndSendCmd(cmdNum, cmdData, myAppMan.config.gaugeIrAddress);
+            } else {
+                console.warn('Command data out of range ' + cmdData);
+            }
         } else {
-            console.warn('Command data out of range ' + cmdData);
-        }
-    } else {
-        console.warn('Invalid command number ' + cmdNum);
+            console.warn('Invalid command number ' + cmdNum);
+        };
+    } catch (err) {
+        console.error('Error parsing TestGauge command. ' + err);
     };
 
     // switch (cmdNumStr) {
