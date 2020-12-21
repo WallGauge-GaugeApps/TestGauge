@@ -1,6 +1,6 @@
 {
   "name": "test-gauge",
-  "version": "4.7.0",
+  "version": "4.7.1",
   "description": "Tool for testing and calibrating a gauge",
   "main": "app.js",
   "scripts": {
