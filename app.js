@@ -62,7 +62,7 @@ myAppMan.on('gaugeCmd', (arg1) => {
 
     let cmdNum = Number(cmdArray[0].trim());
     let cmdData = Number(cmdArray[1].trim());
-    if(cmdNum >= 0 && cmdNumb <= 15){
+    if(cmdNum >= 0 && cmdNum <= 15){
         if (cmdData >= 0 && cmdData <= 4095){
             clearInterval(loopRawInterval);
             console.log('Sending command: ' + cmdNum + ', data: ' + cmdData + ', address: ' + myAppMan.config.gaugeIrAddress);
