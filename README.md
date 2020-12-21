@@ -25,7 +25,7 @@ Commands
   12,0  N/A
   13,0  N/A
   14,0  N/A
-  15,0 Tell Gauge to Identifify its self and stay awake for 60 minutes
+  15,0 Tell Gauge to identify itself and stay awake for 60 minutes
 ```
 
 To set gauge into quick response mode for calibration testing:
