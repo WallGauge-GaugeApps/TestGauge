@@ -57,7 +57,6 @@ myAppMan.on('gaugeCmd', (arg1) => {
     let x = ''
     x = arg1.toString('utf8');
     cmdArray = x.split(',')
-    let cmdNumStr = cmdArray[0]
     console.log('command data = ' + cmdArray[1]);
 
     try {
@@ -77,48 +76,6 @@ myAppMan.on('gaugeCmd', (arg1) => {
     } catch (err) {
         console.error('Error parsing TestGauge command. ' + err);
     };
-
-    // switch (cmdNumStr) {
-    //     case '0':
-    //         console.log('Sending LED Off to gauge address ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(10, 0, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '1':
-    //         console.log('Sending LED On to gauge address ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(10, 1, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '2':
-    //         console.log('Sending LED Flash to gauge address ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(10, 2, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '3':
-    //         console.log('Sending Find Home to gauge address ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(2, 0, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '4':
-    //         console.log('Sending Reset gauge address ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(1, 0, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '5':
-    //         console.log('Disable cycle sleep ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(6, 0, myAppMan.config.gaugeIrAddress);
-    //         break;
-    //     case '6':
-    //         console.log('Set Wake Time to ' + cmdArray[2] + ' for ' + myAppMan.config.gaugeIrAddress);
-    //         clearInterval(loopRawInterval);
-    //         myAppMan.encodeAndSendCmd(6, 0, myAppMan.config.gaugeIrAddress);
-    //         break;
-
-    //     default:
-    //         console.warn('Unknown gauge command ->' + cmdNumStr + '<-. Raw arg value = ->' + arg1 + '<-');
-    //         break;
-    // };
 });
 
 function loopRaw() {
