@@ -3,7 +3,7 @@
     "uuid":"d37282d3-0dda-411e-b978-1ae115f4f0c9",
     "dBusName":"com.TestGauge",
     "calibrationTable": [[0,0],[700,700]],
-    "gaugeIrAddress":"255",
+    "gaugeIrAddress":"200",
     "battLifeInDays":"365",
     "battLastReplaced":"",
     "gaugeValueToDisplayOnBoot":"10",
